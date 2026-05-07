@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Teams Status Notifier</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>📡 Teams Notifier</h1>
+    <label class="toggle" title="Attiva/disattiva notifiche">
+      <input type="checkbox" id="enabledToggle" checked>
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <!-- Tab di selezione provider -->
+  <div class="tabs">
+    <button class="tab active" data-provider="telegram">
+      ✈️ Telegram <span class="badge-free">free</span>
+    </button>
+    <button class="tab" data-provider="pushover">
+      🔔 Pushover <span class="badge-paid">VPN</span>
+    </button>
+  </div>
+
+  <!-- Sezione Telegram -->
+  <section id="section-telegram" class="provider-section active">
+    <label for="telegramToken">Bot Token
+      <span class="hint">da @BotFather</span>
+    </label>
+    <input type="password" id="telegramToken" placeholder="es. 8594601757:AAFg...">
+
+    <label for="chatId">Chat ID
+      <span class="hint">il tuo numero personale</span>
+    </label>
+    <input type="text" id="chatId" placeholder="es. 123456789">
+
+    <div class="buttons">
+      <button class="save-btn primary" data-provider="telegram">💾 Salva</button>
+      <button class="test-btn" data-provider="telegram">🧪 Test</button>
+    </div>
+  </section>
+
+  <!-- Sezione Pushover -->
+  <section id="section-pushover" class="provider-section">
+    <label for="apiToken">API Token (Application)
+      <span class="hint">da pushover.net/apps/build</span>
+    </label>
+    <input type="password" id="apiToken" placeholder="es. azGDORePK8gMaC0QOYAMyEEuzJnyUi">
+
+    <label for="userKey">User Key
+      <span class="hint">dalla dashboard pushover.net</span>
+    </label>
+    <input type="password" id="userKey" placeholder="es. uQiRzpo4DXghDmr9QzzfQu27cmVRsG">
+
+    <div class="buttons">
+      <button class="save-btn primary" data-provider="pushover">💾 Salva</button>
+      <button class="test-btn" data-provider="pushover">🧪 Test</button>
+    </div>
+  </section>
+
+  <!-- Stato globale -->
+  <div id="status" class="status"></div>
+
+  <!-- Provider attivo -->
+  <div class="active-provider">
+    <span>Provider attivo: <b id="activeProviderLabel">Telegram</b></span>
+  </div>
+
+  <!-- Help -->
+  <details class="help">
+    <summary>❓ Quando usare quale</summary>
+    <p><b>✈️ Telegram</b> — gratis e veloce, ideale a casa o in reti aperte.
+       Bloccato da molti proxy aziendali.</p>
+    <p><b>🔔 Pushover</b> — $4.99 una tantum per piattaforma, passa quasi sempre dai proxy aziendali (è un servizio di alerting tecnico).</p>
+    <p>Puoi configurare entrambi e cambiare provider con un click sulla tab.</p>
+  </details>
+
+  <script src="popup.js"></script>
+</body>
+</html>
