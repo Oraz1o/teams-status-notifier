@@ -116,7 +116,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.type === 'NEW_MESSAGE') {
     dispatch({
       title: `💬 ${msg.sender}`,
-      body: `Nuovo messaggio Teams\nTuo stato: ${msg.status || 'sconosciuto'}`
+      body: `Nuovo messaggio Teams`
     });
     return;
   }
